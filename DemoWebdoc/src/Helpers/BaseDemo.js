@@ -150,32 +150,14 @@ export class BaseDemo {
 
         var ballMaterial = new THREE.SpriteMaterial( { map: 'assets/img/logo-liris.png'} );
         var sprite = new THREE.Sprite( ballMaterial );
-        sprite.position.set( window.innerWidth - 50, window.innerHeight - 50, 0 );
+        sprite.position.set( 1842234.5570518845, 5175283.605140153, 366.93474133651694 );
         sprite.scale.set( 64, 64, 1.0 ); // imageWidth, imageHeight
         this.view.scene.add( sprite );
+        this.update3DView();
+        //TEST 2.0-------------------------------------------------------------------------------------
 
-        //var doc2 = test.VisualizeBillBoardOnSideOFScreen("assets/img/logo-liris.png");
-        //this.view.scene.add(doc2);
       }
     });
-  }
-
-  
-  CreateHUDSprite( texture ){
-    const material = new THREE.SpriteMaterial( { map: texture } );
-
-    const width = material.map.image.width;
-    const height = material.map.image.height;
-
-    let spriteTL = new THREE.Sprite( material );
-    spriteTL.center.set( 0.0, 1.0 );
-    spriteTL.scale.set( width, height, 1 );
-    view.scene.add( spriteTL );
-
-    const widthK = window.innerWidth / 2;
-    const heightK = window.innerHeight / 2;
-
-    spriteTL.position.set( - widthK, heightK, 1 ); // top left
   }
 
   /**

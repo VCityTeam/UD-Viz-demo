@@ -10,7 +10,7 @@ export class BillBoard{
 
     /// Visualize document in the city 3D model of UD-Viz
     VisualizeBillBoard() {
-        var lirisTexture = THREE.ImageUtils.loadTexture( 'assets/img/logo-liris.png' );
+        var lirisTexture = THREE.TextureLoader( 'assets/img/logo-liris.png' );
         var lirisMaterial = new THREE.SpriteMaterial( { map: lirisTexture, useScreenCoordinates: false, color: 0xff0000 } );
         var sprite2 = new THREE.Sprite( lirisMaterial );
         sprite2.position.set( 50, 50, 0);
