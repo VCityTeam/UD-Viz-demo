@@ -1,7 +1,7 @@
 /** @format */
 
 //Components
-import { Widgets, Components } from 'ud-viz';
+import { Widgets, Components, Game } from 'ud-viz';
 const ModuleView = Components.ModuleView;
 const TilesManager = Components.TilesManager;
 const LayerManager = Components.LayerManager;
@@ -144,17 +144,64 @@ export class BaseDemo {
       }
 
         ////// BillBoard
-        var test = new BillBoard(this.view.scene,(0,50,0));
-        var doc = test.VisualizeBillBoard();
-        this.view.scene.add(doc);
 
-        var ballMaterial = new THREE.SpriteMaterial( { map: 'assets/img/logo-liris.png'} );
-        var sprite = new THREE.Sprite( ballMaterial );
-        sprite.position.set( 1842234.5570518845, 5175283.605140153, 366.93474133651694 );
-        sprite.scale.set( 64, 64, 1.0 ); // imageWidth, imageHeight
-        this.view.scene.add( sprite );
+        //Cheminée
+        const texture1 = new THREE.TextureLoader().load( './assets/img/web_Source0.jpg' );
+  	    const lirisMaterial1 = new THREE.SpriteMaterial( { map: texture1 } );
+        let spriteCheminee = new THREE.Sprite( lirisMaterial1 );
+        spriteCheminee.position.set( 1843419.7372375734, 5164761.581669409, 275.0925693228869 );
+        spriteCheminee.scale.set( 240, 190, 1.0 ); // imageWidth, imageHeight
+        spriteCheminee.updateMatrixWorld();
+        this.view.scene.add( spriteCheminee );
+
+        //Canal
+        const textureCanal = new THREE.TextureLoader().load( './assets/img/[Sud_de_Lyon._Le_canal_du_Rhône_à_Feyzin_(Rhône)].jpg' );
+  	    const materialCanal = new THREE.SpriteMaterial( { map: textureCanal } );
+        let spriteCanal = new THREE.Sprite( materialCanal );
+        spriteCanal.position.set( 1842814.086029717,5163268.371244811, 180.56181248585187 );
+        spriteCanal.scale.set( 240, 190, 1.0 ); // imageWidth, imageHeight
+        spriteCanal.updateMatrixWorld();
+        this.view.scene.add( spriteCanal );
+
+        //Canal 2
+        const textureCanal2 = new THREE.TextureLoader().load( './assets/img/[Sud_de_Lyon._Le_canal_du_Rhône_à_Feyzin_(Rhône)] (1).jpg' );
+  	    const materialCanal2 = new THREE.SpriteMaterial( { map: textureCanal2 } );
+        let spriteCanal2 = new THREE.Sprite( materialCanal2 );
+        spriteCanal2.position.set( 1843180.3326289866,5165917.396963038, 164.72365689804417 );
+        spriteCanal2.scale.set( 240, 190, 1.0 ); // imageWidth, imageHeight
+        spriteCanal2.updateMatrixWorld();
+        this.view.scene.add( spriteCanal2 );
+
+        //Vue Vallée
+        const textureVallee = new THREE.TextureLoader().load( './assets/img/[Raffinerie_de_Feyzin_(Rhône)].jpg' );
+  	    const materialVallee = new THREE.SpriteMaterial( { map: textureVallee } );
+        let spriteVallee = new THREE.Sprite( materialVallee );
+        spriteVallee.position.set( 1843447.37271422,5161800.607342795, 441.8042123911853 );
+        spriteVallee.scale.set( 300, 210, 1.0 ); // imageWidth, imageHeight
+        spriteVallee.updateMatrixWorld();
+        this.view.scene.add( spriteVallee );
+
+        //Vue Vallée2
+        const textureVallee2 = new THREE.TextureLoader().load( './assets/img/[Cultures_de_grande_plaine_à_Feyzin_(Rhône)].jpg' );
+  	    const materialVallee2 = new THREE.SpriteMaterial( { map: textureVallee2 } );
+        let spriteVallee2 = new THREE.Sprite( materialVallee2 );
+        spriteVallee2.position.set( 1841059.5141856165,5163883.561529171, 333.6820035963699 );
+        spriteVallee2.scale.set( 240, 190, 1.0 ); // imageWidth, imageHeight
+        spriteVallee2.updateMatrixWorld();
+        this.view.scene.add( spriteVallee2 );
+
+        //Episode
+        const textureEpisode = new THREE.TextureLoader().load( './assets/img/episode.png' );
+  	    const materialEpisode = new THREE.SpriteMaterial( { map: textureEpisode } );
+        let spriteEpisode = new THREE.Sprite( materialEpisode );
+        spriteEpisode.position.set( 1839934.1010365202,5157732.570768333, 190.13472357267722 );
+        spriteEpisode.scale.set( 270, 190, 1.0 ); // imageWidth, imageHeight
+        spriteEpisode.updateMatrixWorld();
+        this.view.scene.add( spriteEpisode );
+
         this.update3DView();
         //TEST 2.0-------------------------------------------------------------------------------------
+
 
       }
     });
