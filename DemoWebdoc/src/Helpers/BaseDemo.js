@@ -11,6 +11,8 @@ const $3DTemporalTileset = Widgets.$3DTemporalTileset;
 
 import * as itowns from 'itowns';
 import * as THREE from 'three';
+//import THREEx from 'threex';
+import { CSS3DObject, CSS3DRenderer } from 'three-css3drenderer';
 import proj4 from 'proj4';
 const jquery = require('jquery');
 
@@ -144,64 +146,104 @@ export class BaseDemo {
       }
 
         ////// BillBoard
+        const billboard = new BillBoard();
 
         //Cheminée
-        const texture1 = new THREE.TextureLoader().load( './assets/img/web_Source0.jpg' );
-  	    const lirisMaterial1 = new THREE.SpriteMaterial( { map: texture1 } );
-        let spriteCheminee = new THREE.Sprite( lirisMaterial1 );
-        spriteCheminee.position.set( 1843419.7372375734, 5164761.581669409, 275.0925693228869 );
-        spriteCheminee.scale.set( 240, 190, 1.0 ); // imageWidth, imageHeight
-        spriteCheminee.updateMatrixWorld();
-        this.view.scene.add( spriteCheminee );
+        const sprite = billboard.CreateBillBoard('./assets/img/web_Source0.jpg',new THREE.Vector3(1843419.7372375734, 5164761.581669409, 275.0925693228869),
+        new THREE.Vector3(240, 190, 1.0));
+        sprite.updateMatrixWorld();
+        this.view.scene.add(sprite);
 
         //Canal
-        const textureCanal = new THREE.TextureLoader().load( './assets/img/[Sud_de_Lyon._Le_canal_du_Rhône_à_Feyzin_(Rhône)].jpg' );
-  	    const materialCanal = new THREE.SpriteMaterial( { map: textureCanal } );
-        let spriteCanal = new THREE.Sprite( materialCanal );
-        spriteCanal.position.set( 1842814.086029717,5163268.371244811, 180.56181248585187 );
-        spriteCanal.scale.set( 240, 190, 1.0 ); // imageWidth, imageHeight
+        const spriteCanal = billboard.CreateBillBoard('./assets/img/[Sud_de_Lyon._Le_canal_du_Rhône_à_Feyzin_(Rhône)].jpg',new THREE.Vector3(1842814.086029717,5163268.371244811, 180.56181248585187),
+        new THREE.Vector3(240, 190, 1.0));
         spriteCanal.updateMatrixWorld();
-        this.view.scene.add( spriteCanal );
+        this.view.scene.add(spriteCanal);
 
         //Canal 2
-        const textureCanal2 = new THREE.TextureLoader().load( './assets/img/[Sud_de_Lyon._Le_canal_du_Rhône_à_Feyzin_(Rhône)] (1).jpg' );
-  	    const materialCanal2 = new THREE.SpriteMaterial( { map: textureCanal2 } );
-        let spriteCanal2 = new THREE.Sprite( materialCanal2 );
-        spriteCanal2.position.set( 1843180.3326289866,5165917.396963038, 164.72365689804417 );
-        spriteCanal2.scale.set( 240, 190, 1.0 ); // imageWidth, imageHeight
+        const spriteCanal2 = billboard.CreateBillBoard('./assets/img/[Sud_de_Lyon._Le_canal_du_Rhône_à_Feyzin_(Rhône)] (1).jpg',new THREE.Vector3(1843180.3326289866,5165917.396963038, 164.72365689804417),
+        new THREE.Vector3(240, 190, 1.0));
         spriteCanal2.updateMatrixWorld();
-        this.view.scene.add( spriteCanal2 );
+        this.view.scene.add(spriteCanal2);
 
         //Vue Vallée
-        const textureVallee = new THREE.TextureLoader().load( './assets/img/[Raffinerie_de_Feyzin_(Rhône)].jpg' );
-  	    const materialVallee = new THREE.SpriteMaterial( { map: textureVallee } );
-        let spriteVallee = new THREE.Sprite( materialVallee );
-        spriteVallee.position.set( 1843447.37271422,5161800.607342795, 441.8042123911853 );
-        spriteVallee.scale.set( 300, 210, 1.0 ); // imageWidth, imageHeight
+        const spriteVallee = billboard.CreateBillBoard('./assets/img/[Raffinerie_de_Feyzin_(Rhône)].jpg',new THREE.Vector3(1843447.37271422,5161800.607342795, 441.8042123911853),
+        new THREE.Vector3(300, 210, 1.0));
         spriteVallee.updateMatrixWorld();
-        this.view.scene.add( spriteVallee );
+        this.view.scene.add(spriteVallee);
 
         //Vue Vallée2
-        const textureVallee2 = new THREE.TextureLoader().load( './assets/img/[Cultures_de_grande_plaine_à_Feyzin_(Rhône)].jpg' );
-  	    const materialVallee2 = new THREE.SpriteMaterial( { map: textureVallee2 } );
-        let spriteVallee2 = new THREE.Sprite( materialVallee2 );
-        spriteVallee2.position.set( 1841059.5141856165,5163883.561529171, 333.6820035963699 );
-        spriteVallee2.scale.set( 240, 190, 1.0 ); // imageWidth, imageHeight
+        const spriteVallee2 = billboard.CreateBillBoard('./assets/img/[Cultures_de_grande_plaine_à_Feyzin_(Rhône)].jpg',new THREE.Vector3(1841059.5141856165,5163883.561529171, 333.6820035963699),
+        new THREE.Vector3(240, 190, 1.0));
         spriteVallee2.updateMatrixWorld();
-        this.view.scene.add( spriteVallee2 );
+        this.view.scene.add(spriteVallee2);
 
         //Episode
-        const textureEpisode = new THREE.TextureLoader().load( './assets/img/episode.png' );
-  	    const materialEpisode = new THREE.SpriteMaterial( { map: textureEpisode } );
-        let spriteEpisode = new THREE.Sprite( materialEpisode );
-        spriteEpisode.position.set( 1839934.1010365202,5157732.570768333, 190.13472357267722 );
-        spriteEpisode.scale.set( 270, 190, 1.0 ); // imageWidth, imageHeight
+        const spriteEpisode = billboard.CreateBillBoard('./assets/img/episode.png',new THREE.Vector3(1839934.1010365202,5157732.570768333, 190.13472357267722),
+        new THREE.Vector3(240, 190, 1.0));
         spriteEpisode.updateMatrixWorld();
-        this.view.scene.add( spriteEpisode );
+        this.view.scene.add(spriteEpisode);
+
+
+        //CSS3D-------------------------------------------------------------------------------------
+
+
+        let planeMaterial   = new THREE.MeshBasicMaterial({color: 0x000000, opacity: 0.1, side: THREE.DoubleSide });
+      	let planeWidth = 360;
+        let planeHeight = 200;
+      	let planeGeometry = new THREE.PlaneGeometry( planeWidth, planeHeight );
+      	let planeMesh= new THREE.Mesh( planeGeometry, planeMaterial );
+      	planeMesh.position.y += planeHeight/2;
+        planeMesh.position.set(1839934.1010365202,5157732.570768333, 190.13472357267722);
+      	// add it to the standard (WebGL) scene
+        planeMesh.updateMatrixWorld();
+      	this.view.scene.add(planeMesh);
+
+
+
+      	// create a new scene to hold CSS
+      	let cssScene = new THREE.Scene();
+      	// create the iframe to contain webpage
+      	let element	= document.createElement('iframe');
+      	// webpage to be loaded into iframe
+      	element.src	= "https://stackoverflow.com/questions/24681170/three-js-properly-blending-css3d-and-webgl";
+      	// width of iframe in pixels
+      	let elementWidth = 1880;
+      	// force iframe to have same relative dimensions as planeGeometry
+      	let aspectRatio = planeHeight / planeWidth;
+      	let elementHeight = elementWidth * aspectRatio;
+      	element.style.width  = elementWidth + "px";
+      	element.style.height = elementHeight + "px";
+
+      	// create a CSS3DObject to display element
+      	let cssObject = new CSS3DObject( element );
+      	// synchronize cssObject position/rotation with planeMesh position/rotation
+      	cssObject.position.set(planeMesh.position);
+      	cssObject.rotation.set(planeMesh.rotation);
+      	// resize cssObject to same size as planeMesh (plus a border)
+      	let percentBorder = 0.05;
+      	cssObject.scale.x /= (20 + percentBorder) * (elementWidth / planeWidth);
+      	cssObject.scale.y /= (1 + percentBorder) * (elementWidth / planeWidth);
+      	cssScene.add(cssObject);
+
+      	// create a renderer for CSS
+      	let rendererCSS	= new CSS3DRenderer();
+      	rendererCSS.setSize( window.innerWidth, window.innerHeight );
+      	rendererCSS.domElement.style.position = 'absolute';
+      	rendererCSS.domElement.style.top	  = 0;
+      	rendererCSS.domElement.style.margin	  = 0;
+      	rendererCSS.domElement.style.padding  = 0;
+      	document.body.appendChild( rendererCSS.domElement );
+      	// when window resizes, also resize this renderer
+      	//THREEx.WindowResize(rendererCSS, this.view.camera);
+
+      	/*renderer.domElement.style.position = 'absolute';
+      	renderer.domElement.style.top      = 0;
+      	// make sure original renderer appears on top of CSS renderer
+      	renderer.domElement.style.zIndex   = 1;*/
+      	//rendererCSS.domElement.appendChild( renderer.domElement );
 
         this.update3DView();
-        //TEST 2.0-------------------------------------------------------------------------------------
-
 
       }
     });
