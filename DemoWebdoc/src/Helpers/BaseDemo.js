@@ -176,37 +176,36 @@ export class BaseDemo {
         const spriteVallee2 = billboard.CreateBillBoard('./assets/img/[Cultures_de_grande_plaine_à_Feyzin_(Rhône)].jpg',new THREE.Vector3(1841059.5141856165,5163883.561529171, 333.6820035963699),
         new THREE.Vector3(240, 190, 1.0));
         spriteVallee2.updateMatrixWorld();
-        this.view.scene.add(spriteVallee2);
+        //this.view.scene.add(spriteVallee2);
 
         //Episode
         const spriteEpisode = billboard.CreateBillBoard('./assets/img/episode.png',new THREE.Vector3(1839934.1010365202,5157732.570768333, 190.13472357267722),
         new THREE.Vector3(240, 190, 1.0));
         spriteEpisode.updateMatrixWorld();
-        this.view.scene.add(spriteEpisode);
+        //this.view.scene.add(spriteEpisode);
 
 
         //CSS3D-------------------------------------------------------------------------------------
-
-
         let planeMaterial   = new THREE.MeshBasicMaterial({color: 0x000000, opacity: 0.1, side: THREE.DoubleSide });
       	let planeWidth = 360;
         let planeHeight = 200;
       	let planeGeometry = new THREE.PlaneGeometry( planeWidth, planeHeight );
       	let planeMesh= new THREE.Mesh( planeGeometry, planeMaterial );
       	planeMesh.position.y += planeHeight/2;
-        planeMesh.position.set(1839934.1010365202,5157732.570768333, 190.13472357267722);
+        //planeMesh.position.set(1839934.1010365202,5157732.570768333, 190.13472357267722);
+        planeMesh.position.set(0,0,0);
+
+        planeMesh.rotation.set(0,90,0);
       	// add it to the standard (WebGL) scene
         planeMesh.updateMatrixWorld();
-      	this.view.scene.add(planeMesh);
-
-
+      	//this.view.scene.add(planeMesh);
 
       	// create a new scene to hold CSS
       	let cssScene = new THREE.Scene();
       	// create the iframe to contain webpage
       	let element	= document.createElement('iframe');
       	// webpage to be loaded into iframe
-      	element.src	= "https://stackoverflow.com/questions/24681170/three-js-properly-blending-css3d-and-webgl";
+      	element.src	= "src/Helpers/mapage.html";
       	// width of iframe in pixels
       	let elementWidth = 1880;
       	// force iframe to have same relative dimensions as planeGeometry
@@ -233,15 +232,29 @@ export class BaseDemo {
       	rendererCSS.domElement.style.top	  = 0;
       	rendererCSS.domElement.style.margin	  = 0;
       	rendererCSS.domElement.style.padding  = 0;
+        rendererCSS.domElement.id = "C'est moi";
       	document.body.appendChild( rendererCSS.domElement );
       	// when window resizes, also resize this renderer
       	//THREEx.WindowResize(rendererCSS, this.view.camera);
 
-      	/*renderer.domElement.style.position = 'absolute';
-      	renderer.domElement.style.top      = 0;
+      	this.view.mainLoop.gfxEngine.renderer.domElement.style.position = 'absolute';
+      	this.view.mainLoop.gfxEngine.renderer.domElement.style.top      = 0;
       	// make sure original renderer appears on top of CSS renderer
-      	renderer.domElement.style.zIndex   = 1;*/
-      	//rendererCSS.domElement.appendChild( renderer.domElement );
+      	this.view.mainLoop.gfxEngine.renderer.domElement.style.zIndex   = 1;
+      	rendererCSS.domElement.appendChild( this.view.mainLoop.gfxEngine.renderer.domElement );
+
+        //DEBUG
+        const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 5000 );
+				camera.position.set( 600, 400, 1500 );
+				camera.lookAt( 0, 0, 0 );
+
+
+        const view = this.view;
+        const tick = function(){
+          requestAnimationFrame(tick)
+          rendererCSS.render(cssScene,camera)
+          }
+        tick()
 
         this.update3DView();
 
